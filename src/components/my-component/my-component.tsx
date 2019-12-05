@@ -1,4 +1,4 @@
-import { Component, Prop, Element, State, h } from '@stencil/core';
+import { Component, Prop, Element, h } from '@stencil/core';
 import * as plot from "../../assets/radarChart";
 
 
@@ -17,7 +17,13 @@ export class MyComponent {
   @Prop() diagonal: number;
   @Prop({mutable: true}) step_radial = "2";
 
-  @State() sgrna: string;
+  @Prop() sgrna: string;
+  @Prop() sgrna_json:{}; 
+
+  componentWillLoad(){
+    this.sgrna_json = JSON.parse(this.dic_sgrna);
+    this.sgrna = this.sgrna_json['sequence'];
+  }
 
 // *************************** CLICK ***************************
   chart(dicSgrna: Object) {
@@ -49,12 +55,11 @@ export class MyComponent {
 // *************************** DISPLAY ***************************
 
   render() {
-    let sgrna_parsed = JSON.parse(this.dic_sgrna);
-    this.sgrna = sgrna_parsed['sequence'];
+    
     return ([
       <div id="radarChart"></div>,
       <span>
-      {this.chart(sgrna_parsed)}
+      {this.chart(this.sgrna_json)}
     </span>
     ]);
   }

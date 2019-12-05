@@ -1,6 +1,6 @@
 {
-  "name": "@mmsb/radial-crispr",
-  "version": "0.0.13",
+  "name": "radial-crispr-test-publish",
+  "version": "1.0.0",
   "description": "Stencil Component Starter",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
